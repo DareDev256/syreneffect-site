@@ -86,10 +86,9 @@ export function InstagramFeed() {
             </blockquote>
           </div>
         ))}
-      </div>
 
-      {/* 6th slot — photo card linking to profile */}
-      <a
+        {/* 6th slot — photo card linking to profile */}
+        <a
         href="https://www.instagram.com/syreneffect"
         target="_blank"
         rel="noopener noreferrer"
@@ -112,7 +111,7 @@ export function InstagramFeed() {
             </div>
           </div>
         </div>
-      </a>
-    </div>
+        </a>
+      </div>
   );
 }

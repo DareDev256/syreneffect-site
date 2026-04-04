@@ -42,17 +42,43 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <section className="relative flex-1 flex items-stretch pt-16 md:pt-[72px]">
-        {/* Background */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/photos/Syren3.jpeg"
-            alt=""
-            fill
-            className="object-cover object-top"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-abyss/80 via-abyss/60 to-abyss/90" />
+        {/* Background — multiple Syren photos with crossfade feel */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Main background photo — top half */}
+          <div className="absolute inset-0">
+            <Image
+              src="/photos/Syren1.jpeg"
+              alt=""
+              fill
+              className="object-cover object-top"
+              priority
+              sizes="100vw"
+            />
+          </div>
+          {/* Second photo — bottom right, blended */}
+          <div className="absolute bottom-0 right-0 w-1/2 h-2/3 opacity-60">
+            <Image
+              src="/photos/Syren2.jpeg"
+              alt=""
+              fill
+              className="object-cover object-top"
+              sizes="50vw"
+            />
+          </div>
+          {/* Third photo — left side accent */}
+          <div className="absolute top-0 left-0 w-2/5 h-full opacity-40 hidden md:block">
+            <Image
+              src="/photos/Syren3.jpeg"
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes="40vw"
+            />
+          </div>
+          {/* Dark overlay — keeps text readable */}
+          <div className="absolute inset-0 bg-gradient-to-b from-abyss/75 via-abyss/60 to-abyss/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-abyss/40 via-transparent to-abyss/40" />
+          {/* Color accent */}
           <div className="absolute inset-0 bg-gradient-to-r from-purple-glow/5 via-transparent to-teal-glow/5" />
         </div>
 
