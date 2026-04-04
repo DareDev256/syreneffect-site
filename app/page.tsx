@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { TwitchPlayer } from "./components/TwitchPlayer";
 import { SocialLinks } from "./components/SocialLinks";
 import { PhotoBackground } from "./components/PhotoBackground";
