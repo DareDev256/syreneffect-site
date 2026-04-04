@@ -10,6 +10,7 @@ const postUrls = [
   "https://www.instagram.com/p/DOMp9mlDk1b/",  // "I Wanna B where U are" (confirmed)
   "https://www.instagram.com/p/DM8fGLFRdZO/",  // "I'll see you in the city" (confirmed)
   "https://www.instagram.com/p/DLbFE8kMuhS/",  // "The Playmaker" (confirmed)
+  "https://www.instagram.com/syreneffect/reel/DIH-ESfumQb/",  // "Rate my dance 1-10?"
 ];
 
 export function InstagramFeed() {

@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 
 const TWITCH_CHANNEL = "syreneffect";
 
 export function TwitchPlayer() {
+  const reactId = useId();
+  // useId gives stable ID across server/client — no hydration mismatch
+  const embedId = `twitch-embed-${reactId.replace(/:/g, "")}`;
   const [loaded, setLoaded] = useState(false);
   const [isLive, setIsLive] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const embedCreated = useRef(false);
-  const embedId = useRef(
-    `twitch-${Math.random().toString(36).slice(2, 8)}`
-  );
 
   // Check live status
   useEffect(() => {
@@ -34,11 +34,11 @@ export function TwitchPlayer() {
       }
     };
     checkStatus();
-    const interval = setInterval(checkStatus, 60000);
+    const interval = setInterval(checkStatus, 120000); // 2 min to avoid 429s
     return () => clearInterval(interval);
   }, []);
 
-  // Load Twitch embed — singleton guard
+  // Load Twitch embed
   useEffect(() => {
     if (embedCreated.current) return;
 
@@ -47,14 +47,15 @@ export function TwitchPlayer() {
 
     const initEmbed = () => {
       if (embedCreated.current) return;
+      const el = document.getElementById(embedId);
+      if (!el) return;
+
       const tw = (window as unknown as Record<string, unknown>).Twitch as
-        | {
-            Embed: new (id: string, opts: Record<string, unknown>) => unknown;
-          }
+        | { Embed: new (id: string, opts: Record<string, unknown>) => unknown }
         | undefined;
-      if (tw && containerRef.current) {
+      if (tw) {
         embedCreated.current = true;
-        new tw.Embed(embedId.current, {
+        new tw.Embed(embedId, {
           width: "100%",
           height: "100%",
           channel: TWITCH_CHANNEL,
@@ -68,18 +69,21 @@ export function TwitchPlayer() {
       }
     };
 
-    // If Twitch script already loaded by another component
+    // If Twitch already loaded
     if ((window as unknown as Record<string, unknown>).Twitch) {
-      initEmbed();
+      // Small delay to ensure DOM is ready after hydration
+      requestAnimationFrame(initEmbed);
       return;
     }
 
-    // Check if script tag already exists
+    // Check if script already exists
     const existing = document.querySelector(
       'script[src="https://embed.twitch.tv/embed/v1.js"]'
     );
     if (existing) {
       existing.addEventListener("load", initEmbed);
+      // Also try immediately in case it already loaded
+      requestAnimationFrame(initEmbed);
       return;
     }
 
@@ -88,7 +92,7 @@ export function TwitchPlayer() {
     script.async = true;
     script.onload = initEmbed;
     document.head.appendChild(script);
-  }, []);
+  }, [embedId]);
 
   return (
     <div className="glass-card overflow-hidden relative">
@@ -99,7 +103,7 @@ export function TwitchPlayer() {
       )}
       <div
         ref={containerRef}
-        id={embedId.current}
+        id={embedId}
         className="w-full aspect-video"
       >
         {!loaded && (

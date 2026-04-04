@@ -1,25 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 
 export function TwitchEmbed() {
+  const reactId = useId();
+  const embedId = `twitch-stream-${reactId.replace(/:/g, "")}`;
   const containerRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
-  const embedId = useRef(`twitch-stream-${Math.random().toString(36).slice(2, 8)}`);
+  const embedCreated = useRef(false);
 
   useEffect(() => {
+    if (embedCreated.current) return;
+
     const parent =
       typeof window !== "undefined" ? window.location.hostname : "localhost";
 
-    const script = document.createElement("script");
-    script.src = "https://embed.twitch.tv/embed/v1.js";
-    script.async = true;
-    script.onload = () => {
+    const initEmbed = () => {
+      if (embedCreated.current) return;
+      const el = document.getElementById(embedId);
+      if (!el) return;
+
       const tw = (window as unknown as Record<string, unknown>).Twitch as
         | { Embed: new (id: string, opts: Record<string, unknown>) => unknown }
         | undefined;
-      if (containerRef.current && tw) {
-        new tw.Embed(embedId.current, {
+      if (tw) {
+        embedCreated.current = true;
+        new tw.Embed(embedId, {
           width: "100%",
           height: "100%",
           channel: "syreneffect",
@@ -32,17 +38,33 @@ export function TwitchEmbed() {
         setLoaded(true);
       }
     };
-    document.body.appendChild(script);
-    return () => {
-      script.remove();
-    };
-  }, []);
+
+    if ((window as unknown as Record<string, unknown>).Twitch) {
+      requestAnimationFrame(initEmbed);
+      return;
+    }
+
+    const existing = document.querySelector(
+      'script[src="https://embed.twitch.tv/embed/v1.js"]'
+    );
+    if (existing) {
+      existing.addEventListener("load", initEmbed);
+      requestAnimationFrame(initEmbed);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://embed.twitch.tv/embed/v1.js";
+    script.async = true;
+    script.onload = initEmbed;
+    document.head.appendChild(script);
+  }, [embedId]);
 
   return (
     <div className="glass-card overflow-hidden">
       <div
         ref={containerRef}
-        id={embedId.current}
+        id={embedId}
         className="w-full aspect-video md:aspect-[16/9] min-h-[400px] md:min-h-[500px]"
       >
         {!loaded && (

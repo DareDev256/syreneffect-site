@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE SYREN EFFECT</title>
+  <meta name="description" content="Syreneffect — Twitch Streamer, Content Creator. Live every Wednesday, Thursday & Sunday.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-ocean: #0a0a1a;
+      --abyss: #050510;
+      --purple-glow: #7c3aed;
+      --teal-glow: #06b6d4;
+      --pink-accent: #ec4899;
+      --soft-white: #e2e8f0;
+      --muted: #94a3b8;
+      --card-bg: rgba(15, 15, 35, 0.6);
+      --card-border: rgba(124, 58, 237, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--abyss);
+      color: var(--soft-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === ANIMATED BACKGROUND === */
+    .bg-ocean {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-ocean::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite;
+    }
+
+    .bg-ocean::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.04) 0%, transparent 40%);
+      animation: drift 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(2%, -1%) rotate(1deg); }
+      66% { transform: translate(-1%, 2%) rotate(-1deg); }
+    }
+
+    /* === PARTICLES (CSS-only) === */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(124, 58, 237, 0.4);
+      border-radius: 50%;
+      animation: float-up linear infinite;
+    }
+
+    .particle:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; width: 3px; height: 3px; background: rgba(6, 182, 212, 0.3); }
+    .particle:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; }
+    .particle:nth-child(3) { left: 35%; animation-duration: 10s; animation-delay: 4s; background: rgba(236, 72, 153, 0.3); }
+    .particle:nth-child(4) { left: 50%; animation-duration: 18s; animation-delay: 1s; width: 3px; height: 3px; }
+    .particle:nth-child(5) { left: 65%; animation-duration: 14s; animation-delay: 3s; background: rgba(6, 182, 212, 0.3); }
+    .particle:nth-child(6) { left: 75%; animation-duration: 11s; animation-delay: 5s; }
+    .particle:nth-child(7) { left: 85%; animation-duration: 16s; animation-delay: 2s; background: rgba(236, 72, 153, 0.2); }
+    .particle:nth-child(8) { left: 45%; animation-duration: 13s; animation-delay: 6s; width: 4px; height: 4px; background: rgba(124, 58, 237, 0.2); }
+
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* === LAYOUT === */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* === PROFILE SECTION === */
+    .profile {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .avatar-ring {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--purple-glow), var(--teal-glow), var(--pink-accent));
+      margin: 0 auto 1.5rem;
+      animation: ring-rotate 6s linear infinite;
+      position: relative;
+    }
+
+    .avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-glow), var(--teal-glow), var(--pink-accent));
+      filter: blur(12px);
+      opacity: 0.4;
+      z-index: -1;
+      animation: ring-rotate 6s linear infinite reverse;
+    }
+
+    @keyframes ring-rotate {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--abyss);
+    }
+
+    .profile h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, #e2e8f0, #c084fc, #67e8f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile .handle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .profile .bio {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .profile .bio .flag {
+      font-size: 1rem;
+    }
+
+    .profile .bio .highlight {
+      color: var(--teal-glow);
+    }
+
+    /* === STREAM STATUS BADGE === */
+    .stream-schedule {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      color: #c084fc;
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .stream-schedule .dot {
+      width: 6px;
+      height: 6px;
+      background: #a78bfa;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    /* === LINK CARDS === */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.25rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--soft-white);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(6, 182, 212, 0.05));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .link-card:hover::before {
+      opacity: 1;
+    }
+
+    .link-card:hover {
+      border-color: rgba(124, 58, 237, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1), 0 0 0 1px rgba(124, 58, 237, 0.1);
+    }
+
+    .link-card:active {
+      transform: translateY(0);
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .link-icon.twitch { background: rgba(145, 70, 255, 0.15); color: #9146FF; }
+    .link-icon.instagram { background: rgba(236, 72, 153, 0.15); color: #ec4899; }
+    .link-icon.tiktok { background: rgba(6, 182, 212, 0.15); color: #06b6d4; }
+    .link-icon.twitter { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+    .link-icon.snapchat { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+    .link-icon.spam { background: rgba(236, 72, 153, 0.1); color: #f472b6; }
+
+    .link-info {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link-info .link-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .link-info .link-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .link-arrow {
+      color: var(--muted);
+      transition: transform 0.25s ease, color 0.25s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link-card:hover .link-arrow {
+      transform: translateX(3px);
+      color: var(--purple-glow);
+    }
+
+    /* === SOCIAL ROW (bottom) === */
+    .social-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+      padding-top: 2rem;
+    }
+
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .social-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .social-icon:hover {
+      border-color: rgba(124, 58, 237, 0.4);
+      color: var(--soft-white);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 0.7rem;
+      color: rgba(148, 163, 184, 0.4);
+      letter-spacing: 0.05em;
+    }
+
+    /* === REDUCED MOTION === */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.25rem 3rem;
+      }
+      .profile h1 {
+        font-size: 1.5rem;
+      }
+      .avatar-ring {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
+    /* === FADE-IN ANIMATION === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.15s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+    .fade-in:nth-child(4) { animation-delay: 0.25s; }
+    .fade-in:nth-child(5) { animation-delay: 0.3s; }
+    .fade-in:nth-child(6) { animation-delay: 0.35s; }
+    .fade-in:nth-child(7) { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-ocean"></div>
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- Profile -->
+    <div class="profile fade-in">
+      <div class="avatar-ring">
+        <img src="https://linktr.ee/og/image/Thesyreneffect.jpg" alt="Syreneffect profile photo" loading="eager">
+      </div>
+      <h1>THE SYREN EFFECT</h1>
+      <p class="handle">@syreneffect</p>
+      <p class="bio">
+        <span class="flag">🇬🇷</span> <span class="flag">🇮🇷</span> Content Creator &amp; Twitch Streamer<br>
+        Live every <span class="highlight">Wed, Thu &amp; Sun</span><br>
+        24hr streams once a month
+      </p>
+      <div class="stream-schedule">
+        <span class="dot"></span>
+        STREAMING WED &bull; THU &bull; SUN
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="links">
+
+      <!-- Twitch -->
+      <a href="https://twitch.tv/syreneffect" target="_blank" rel="noopener" class="link-card fade-in">
+        <div class="link-icon twitch">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+        </div>
+        <div class="link-info">
+          <div class="link-title">Twitch</div>
+          <div class="link-desc">Watch me live</div>
+        </div>
+        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/syreneffect" target="_blank" rel="noopener" class="link-card fade-in">
+        <div class="link-icon instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div class="link-info">
+          <div class="link-title">Instagram</div>
+          <div class="link-desc">21.4K followers</div>
+        </div>
+        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://tiktok.com/@syreneffect" target="_blank" rel="noopener" class="link-card fade-in">
+        <div class="link-icon tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.15a8.16 8.16 0 005.58 2.2V11.3a4.85 4.85 0 01-3.77-1.85V6.69z"/></svg>
+        </div>
+        <div class="link-info">
+          <div class="link-title">TikTok</div>
+          <div class="link-desc">@syreneffect</div>
+        </div>
+        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Twitter/X -->
+      <a href="https://x.com/syreneffect" target="_blank" rel="noopener" class="link-card fade-in">
+        <div class="link-icon twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <div class="link-info">
+          <div class="link-title">X / Twitter</div>
+          <div class="link-desc">@syreneffect</div>
+        </div>
+        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Snapchat -->
+      <a href="https://snapchat.com/t/MlQbanbk" target="_blank" rel="noopener" class="link-card fade-in">
+        <div class="link-icon snapchat">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.922-.214.15-.058.303-.086.466-.086a.94.94 0 01.397.09c.459.194.59.59.59.785 0 .329-.186.586-.39.724a4.08 4.08 0 01-.82.36c-.126.045-.27.094-.42.147-1.13.42-1.342.825-1.342 1.21 0 .06.006.12.018.18.47 2.043 2.09 3.054 2.175 3.097.12.06.18.12.27.21.09.12.134.27.134.42 0 .254-.135.48-.363.63-.703.47-1.65.565-2.19.592-.24.015-.479.06-.704.103-.21.045-.404.075-.582.09-.225.014-.435.044-.629.089-.2.045-.39.103-.569.176-.614.254-1.2.574-1.8.574-.06 0-.12 0-.18-.015-.6 0-1.186-.32-1.8-.574a3.78 3.78 0 00-.569-.176 7.074 7.074 0 00-.629-.09c-.18-.014-.374-.044-.584-.088a6.996 6.996 0 01-.702-.103c-.54-.03-1.487-.12-2.19-.593a.73.73 0 01-.362-.63c0-.15.044-.3.134-.42.09-.09.15-.15.27-.21.084-.044 1.704-1.054 2.175-3.097.012-.06.018-.12.018-.18 0-.405-.225-.795-1.342-1.21-.15-.055-.294-.103-.42-.148a4.08 4.08 0 01-.82-.36c-.205-.135-.39-.39-.39-.72 0-.194.131-.59.59-.784a.94.94 0 01.397-.09c.163 0 .316.027.466.086.263.094.622.214.922.214.198 0 .326-.044.401-.09-.008-.164-.018-.33-.03-.51l-.003-.06c-.104-1.628-.23-3.654.3-4.847C7.86 1.07 11.216.793 12.206.793z"/></svg>
+        </div>
+        <div class="link-info">
+          <div class="link-title">Snapchat</div>
+          <div class="link-desc">Add me</div>
+        </div>
+        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Instagram Spam -->
+      <a href="https://instagram.com/syrenspam" target="_blank" rel="noopener" class="link-card fade-in">
+        <div class="link-icon spam">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div class="link-info">
+          <div class="link-title">Spam Account</div>
+          <div class="link-desc">@syrenspam — behind the scenes</div>
+        </div>
+        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+    </div>
+
+    <!-- Bottom Social Icons -->
+    <div class="social-row">
+      <a href="https://twitch.tv/syreneffect" target="_blank" rel="noopener" class="social-icon" aria-label="Twitch">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+      </a>
+      <a href="https://instagram.com/syreneffect" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@syreneffect" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.15a8.16 8.16 0 005.58 2.2V11.3a4.85 4.85 0 01-3.77-1.85V6.69z"/></svg>
+      </a>
+      <a href="https://x.com/syreneffect" target="_blank" rel="noopener" class="social-icon" aria-label="X Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://snapchat.com/t/MlQbanbk" target="_blank" rel="noopener" class="social-icon" aria-label="Snapchat">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.922-.214.15-.058.303-.086.466-.086a.94.94 0 01.397.09c.459.194.59.59.59.785 0 .329-.186.586-.39.724a4.08 4.08 0 01-.82.36c-.126.045-.27.094-.42.147-1.13.42-1.342.825-1.342 1.21 0 .06.006.12.018.18.47 2.043 2.09 3.054 2.175 3.097.12.06.18.12.27.21.09.12.134.27.134.42 0 .254-.135.48-.363.63-.703.47-1.65.565-2.19.592-.24.015-.479.06-.704.103-.21.045-.404.075-.582.09-.225.014-.435.044-.629.089-.2.045-.39.103-.569.176-.614.254-1.2.574-1.8.574-.06 0-.12 0-.18-.015-.6 0-1.186-.32-1.8-.574a3.78 3.78 0 00-.569-.176 7.074 7.074 0 00-.629-.09c-.18-.014-.374-.044-.584-.088a6.996 6.996 0 01-.702-.103c-.54-.03-1.487-.12-2.19-.593a.73.73 0 01-.362-.63c0-.15.044-.3.134-.42.09-.09.15-.15.27-.21.084-.044 1.704-1.054 2.175-3.097.012-.06.018-.12.018-.18 0-.405-.225-.795-1.342-1.21-.15-.055-.294-.103-.42-.148a4.08 4.08 0 01-.82-.36c-.205-.135-.39-.39-.39-.72 0-.194.131-.59.59-.784a.94.94 0 01.397-.09c.163 0 .316.027.466.086.263.094.622.214.922.214.198 0 .326-.044.401-.09-.008-.164-.018-.33-.03-.51l-.003-.06c-.104-1.628-.23-3.654.3-4.847C7.86 1.07 11.216.793 12.206.793z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer">SYRENEFFECT</div>
+
+  </div>
+
+</body>
+</html>
