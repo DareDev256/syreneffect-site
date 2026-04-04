@@ -113,5 +113,6 @@ export function InstagramFeed() {
         </div>
         </a>
       </div>
+    </div>
   );
 }
