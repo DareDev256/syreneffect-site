@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://syreneffect.com/sitemap.xml",
+    sitemap: "https://www.syreneffect.com/sitemap.xml",
   };
 }

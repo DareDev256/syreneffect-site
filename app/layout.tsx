@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syreneffect.com"),
+  metadataBase: new URL("https://www.syreneffect.com"),
   title: {
     default: "THE SYREN EFFECT | Twitch Streamer & Content Creator",
     template: "%s | THE SYREN EFFECT",
