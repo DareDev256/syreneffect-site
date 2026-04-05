@@ -3,6 +3,8 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "./components/Navigation";
 import { Background } from "./components/Background";
+import { Analytics } from "./components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -114,6 +116,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
         <Background />
         <Navigation />
+        <Analytics />
+        <VercelAnalytics />
         <main className="relative z-10 flex-1">{children}</main>
         <footer className="relative z-10 py-8 text-center border-t border-purple-glow/10">
           <p className="text-muted text-sm tracking-[0.2em] uppercase font-light">

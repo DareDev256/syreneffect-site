@@ -1,3 +1,7 @@
+"use client";
+
+import { useTrackClick } from "./Analytics";
+
 const links = [
   {
     platform: "Twitch",
@@ -74,6 +78,8 @@ const links = [
 ];
 
 export function SocialLinks() {
+  const trackClick = useTrackClick();
+
   return (
     <div className="space-y-2 max-h-[calc(100vh-120px)] md:max-h-[70vh] overflow-y-auto pr-1 scrollbar-thin">
       {links.map((link) => (
@@ -82,6 +88,7 @@ export function SocialLinks() {
           href={link.href}
           target={link.href.startsWith("mailto:") ? undefined : "_blank"}
           rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          onClick={() => trackClick(link.href, link.platform)}
           className="link-card group"
         >
           <div
