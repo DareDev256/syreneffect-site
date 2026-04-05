@@ -49,9 +49,34 @@ const stats = [
 
 const clips = [
   {
+    title: "sexyy red x syreneffect",
+    embed: "https://clips.twitch.tv/embed?clip=AbstemiousWanderingBaguetteWutFace-LmUq5-EnpgGYt-Iz&parent=syreneffect.com&parent=localhost",
+    platform: "Twitch Clip",
+  },
+  {
+    title: "poppin bottle$$$",
+    embed: "https://clips.twitch.tv/embed?clip=AdorableSuccessfulSardineTBTacoLeft-jr5Zos6THWdImhRm&parent=syreneffect.com&parent=localhost",
+    platform: "Twitch Clip",
+  },
+  {
+    title: "BB Motion",
+    embed: "https://clips.twitch.tv/embed?clip=WonderfulHardClintJKanStyle-lEmo1Bfe6ywqguwU&parent=syreneffect.com&parent=localhost",
+    platform: "Twitch Clip",
+  },
+  {
+    title: "yams stacked",
+    embed: "https://clips.twitch.tv/embed?clip=RealAssiduousWaffleRalpherZ-9WMtXxC4k7Qk8TOc&parent=syreneffect.com&parent=localhost",
+    platform: "Twitch Clip",
+  },
+  {
     title: "Fortnite stream highlights",
     embed: "https://www.youtube.com/embed/cb-oDl9xRKY",
     platform: "YouTube",
+  },
+  {
+    title: "splits",
+    embed: "https://clips.twitch.tv/embed?clip=AthleticUnusualSquidRaccAttack-GlGxgVXX8yqndp5h&parent=syreneffect.com&parent=localhost",
+    platform: "Twitch Clip",
   },
 ];
 
@@ -195,41 +220,24 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {clips.map((clip) => (
               <div key={clip.title} className="glass-card overflow-hidden group">
                 <div className="aspect-video">
                   <iframe
                     src={clip.embed}
                     title={clip.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     allowFullScreen
                     className="w-full h-full border-0"
                   />
                 </div>
-                <div className="p-4">
+                <div className="p-3">
                   <p className="text-soft-white text-sm font-medium">{clip.title}</p>
                   <p className="text-muted text-xs mt-1">{clip.platform}</p>
                 </div>
               </div>
             ))}
-
-            {/* Placeholder for more clips */}
-            <a
-              href="https://www.youtube.com/@syreneffect"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card flex items-center justify-center aspect-video group hover:border-purple-glow/30 transition-all"
-            >
-              <div className="text-center space-y-3">
-                <svg className="w-10 h-10 text-muted/40 group-hover:text-purple-glow mx-auto transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                </svg>
-                <p className="text-muted/60 text-sm group-hover:text-soft-white transition-colors">
-                  More on YouTube
-                </p>
-              </div>
-            </a>
           </div>
         </div>
       </section>
