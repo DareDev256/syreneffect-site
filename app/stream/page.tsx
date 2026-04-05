@@ -97,35 +97,6 @@ export default function StreamPage() {
           </div>
         </section>
 
-        {/* Kick Embed */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-center gap-3">
-            <svg className="w-6 h-6 text-[#53FC18]" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4 2h4v4h4V2h4v4h-4v4h4v4h-4v4h4v4h-4v-4h-4v4H4v-4h4v-4H4v-4h4V6H4V2z" />
-            </svg>
-            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold gradient-text">
-              Also on Kick
-            </h2>
-          </div>
-          <div className="glass-card overflow-hidden">
-            <iframe
-              src="https://player.kick.com/syreneffect"
-              title="SyrenEffect on Kick"
-              allowFullScreen
-              className="w-full aspect-video border-0"
-            />
-          </div>
-          <div className="text-center">
-            <a
-              href="https://kick.com/syreneffect"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-muted hover:text-[#53FC18] transition-colors tracking-wider uppercase"
-            >
-              Open in Kick
-            </a>
-          </div>
-        </section>
       </div>
     </div>
   );

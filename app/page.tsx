@@ -59,18 +59,6 @@ export default function Home() {
               >
                 Open in Twitch
               </a>
-              <span className="text-muted/30">|</span>
-              <a
-                href="https://kick.com/syreneffect"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted hover:text-[#53FC18] transition-colors tracking-wider uppercase flex items-center gap-1"
-              >
-                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4 2h4v4h4V2h4v4h-4v4h4v4h-4v4h4v4h-4v-4h-4v4H4v-4h4v-4H4v-4h4V6H4V2z" />
-                </svg>
-                Kick
-              </a>
             </div>
           </div>
 

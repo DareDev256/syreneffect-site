@@ -32,7 +32,6 @@ export const metadata: Metadata = {
     "content creator",
     "gaming",
     "live streaming",
-    "kick streamer",
   ],
   authors: [{ name: "SyrenEffect" }],
   creator: "SyrenEffect",
@@ -100,9 +99,8 @@ export default function RootLayout({
                 "Twitch Streamer, Content Creator & Digital Influencer",
               sameAs: [
                 "https://www.twitch.tv/syreneffect",
-                "https://kick.com/syreneffect",
                 "https://www.instagram.com/syreneffect",
-                "https://www.tiktok.com/@thesyreneffect",
+                "https://www.tiktok.com/@syren.effect",
                 "https://www.youtube.com/@syreneffect",
                 "https://x.com/syreneffect",
                 "https://www.threads.net/@syreneffect",
