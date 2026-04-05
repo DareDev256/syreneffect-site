@@ -7,8 +7,7 @@ import { useEffect, useRef } from "react";
 const postUrls = [
   "https://www.instagram.com/p/DTvoQXwDlby/",  // Syren's pick
   "https://www.instagram.com/p/DR8E0Cejuc_/",  // Syren's pick
-  "https://www.instagram.com/p/DO9NxVNjlPD/",  // Wait 4 my Call
-  "https://www.instagram.com/p/DFLi2lgRTEU/",  // Syren's pick
+  "https://www.instagram.com/p/DPwrjl1jjtG/",  // Couldn't get any better
   "https://www.instagram.com/p/DOMp9mlDk1b/",  // I Wanna B where U are (confirmed)
   "https://www.instagram.com/p/DRNiP8pjpRK/",  // I bet I can make U say I love U
   "https://www.instagram.com/p/DM8fGLFRdZO/",  // I'll see you in the city (confirmed)
