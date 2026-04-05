@@ -58,6 +58,15 @@ export function PhotoBackground() {
           <div className="absolute inset-0 rounded-[30px] md:rounded-[40px] bg-gradient-to-b from-abyss/30 via-transparent to-abyss/50" />
         </div>
 
+        {/* Photo 7 — bottom-right, mobile visible */}
+        <div
+          className="absolute bottom-[10%] -right-6 md:right-[5%] w-[220px] h-[290px] md:w-[360px] md:h-[470px] opacity-[0.12] md:opacity-[0.09] -rotate-6"
+          style={{ animation: "photo-drift-1 33s ease-in-out infinite" }}
+        >
+          <Image src="/photos/Syren7.jpeg" alt="" fill className="object-cover rounded-[30px] md:rounded-[40px]" sizes="(max-width: 768px) 220px, 360px" />
+          <div className="absolute inset-0 rounded-[30px] md:rounded-[40px] bg-gradient-to-tl from-abyss/40 via-transparent to-abyss/30" />
+        </div>
+
         {/* Color glow overlays */}
         <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-glow/[0.04] rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-teal-glow/[0.03] rounded-full blur-[100px]" />
