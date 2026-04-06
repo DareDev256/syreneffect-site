@@ -4,6 +4,7 @@ import { SocialLinks } from "./components/SocialLinks";
 import { PhotoBackground } from "./components/PhotoBackground";
 import { SocialIcons } from "./components/SocialIcons";
 import { SplashGate } from "./components/SplashGate";
+import { LazyClip } from "./components/LazyClip";
 
 /* SVG flag components */
 function GreeceFlag() {
@@ -281,21 +282,12 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {clips.map((clip) => (
-              <div key={clip.title} className="glass-card overflow-hidden group">
-                <div className="aspect-video">
-                  <iframe
-                    src={clip.embed}
-                    title={clip.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                    allowFullScreen
-                    className="w-full h-full border-0"
-                  />
-                </div>
-                <div className="p-3">
-                  <p className="text-soft-white text-sm font-medium">{clip.title}</p>
-                  <p className="text-muted text-xs mt-1">{clip.platform}</p>
-                </div>
-              </div>
+              <LazyClip
+                key={clip.title}
+                title={clip.title}
+                embed={clip.embed}
+                platform={clip.platform}
+              />
             ))}
           </div>
         </div>
