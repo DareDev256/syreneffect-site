@@ -108,9 +108,9 @@ const collabs = [
 
 const clips = [
   {
-    title: "sexyy red x syreneffect",
-    embed: "https://clips.twitch.tv/embed?clip=AbstemiousWanderingBaguetteWutFace-LmUq5-EnpgGYt-Iz&parent=syreneffect.com&parent=localhost",
-    platform: "Twitch Clip",
+    title: "Fortnite stream highlights",
+    embed: "https://www.youtube.com/embed/cb-oDl9xRKY",
+    platform: "YouTube",
   },
   {
     title: "poppin bottle$$$",
@@ -118,23 +118,8 @@ const clips = [
     platform: "Twitch Clip",
   },
   {
-    title: "BB Motion",
-    embed: "https://clips.twitch.tv/embed?clip=WonderfulHardClintJKanStyle-lEmo1Bfe6ywqguwU&parent=syreneffect.com&parent=localhost",
-    platform: "Twitch Clip",
-  },
-  {
-    title: "yams stacked",
-    embed: "https://clips.twitch.tv/embed?clip=RealAssiduousWaffleRalpherZ-9WMtXxC4k7Qk8TOc&parent=syreneffect.com&parent=localhost",
-    platform: "Twitch Clip",
-  },
-  {
-    title: "Fortnite stream highlights",
-    embed: "https://www.youtube.com/embed/cb-oDl9xRKY",
-    platform: "YouTube",
-  },
-  {
-    title: "splits",
-    embed: "https://clips.twitch.tv/embed?clip=AthleticUnusualSquidRaccAttack-GlGxgVXX8yqndp5h&parent=syreneffect.com&parent=localhost",
+    title: "sexyy red x syreneffect",
+    embed: "https://clips.twitch.tv/embed?clip=AbstemiousWanderingBaguetteWutFace-LmUq5-EnpgGYt-Iz&parent=syreneffect.com&parent=localhost",
     platform: "Twitch Clip",
   },
 ];
