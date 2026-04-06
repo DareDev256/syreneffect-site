@@ -3,6 +3,7 @@ import { TwitchPlayer } from "./components/TwitchPlayer";
 import { SocialLinks } from "./components/SocialLinks";
 import { PhotoBackground } from "./components/PhotoBackground";
 import { SocialIcons } from "./components/SocialIcons";
+import { SplashGate } from "./components/SplashGate";
 
 /* SVG flag components */
 function GreeceFlag() {
@@ -47,6 +48,63 @@ const stats = [
   { value: "24hr", label: "Monthly Marathon", color: "text-teal-glow" },
 ];
 
+const collabs = [
+  {
+    name: "Roy Woods",
+    role: "OVO Sound Artist",
+    image: "/photos/collabs/roy-woods.png",
+    link: "https://www.instagram.com/roywoods/",
+  },
+  {
+    name: "MK",
+    role: "Street Basketball Creator",
+    image: "/photos/collabs/mk-kiatipis.jpg",
+    link: "https://www.instagram.com/mkiatipis/",
+  },
+  {
+    name: "SisiBanana",
+    role: "Content Creator",
+    image: "/photos/collabs/sisibanana.jpg",
+    link: "https://www.instagram.com/sisibanana/",
+  },
+  {
+    name: "KShowTime",
+    role: "Entertainment Creator",
+    image: "/photos/collabs/kshowtime.jpg",
+    link: "https://www.instagram.com/k_showtime/",
+  },
+  {
+    name: "Cribazz",
+    role: "Streamer & Creator",
+    image: "/photos/collabs/cribazz.png",
+    link: "https://www.twitch.tv/cribazz",
+  },
+  {
+    name: "Kishka",
+    role: "Twitch Streamer",
+    image: "/photos/collabs/kishka.png",
+    link: "https://www.instagram.com/almightykishka/",
+  },
+  {
+    name: "Ryan Diaz",
+    role: "Creator & Streamer",
+    image: "/photos/collabs/ryan-diaz.png",
+    link: "https://www.instagram.com/ryan_railer/",
+  },
+  {
+    name: "Khalil",
+    role: "Twitch Streamer",
+    image: "/photos/collabs/khalil.png",
+    link: "https://www.twitch.tv/khalil_",
+  },
+  {
+    name: "RicohEffna",
+    role: "Content Creator",
+    image: null,
+    link: null,
+  },
+];
+
 const clips = [
   {
     title: "sexyy red x syreneffect",
@@ -82,6 +140,7 @@ const clips = [
 
 export default function Home() {
   return (
+    <SplashGate>
     <div className="min-h-screen">
       {/* ========== SECTION 1: HERO ========== */}
       <section className="relative flex items-stretch pt-16 md:pt-[72px] min-h-screen">
@@ -254,23 +313,53 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {/* Placeholder collab cards — Syren will fill these */}
-            {[
-              { name: "Coming Soon", role: "Stream collab" },
-              { name: "Coming Soon", role: "Stream collab" },
-              { name: "Coming Soon", role: "Stream collab" },
-            ].map((collab, i) => (
-              <div key={i} className="glass-card p-6 text-center space-y-3 group hover:border-purple-glow/30 transition-all">
-                <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-purple-glow/20 to-teal-glow/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-muted/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {collabs.map((collab) => {
+              const Card = (
+                <div className="glass-card p-5 text-center space-y-3 group hover:border-purple-glow/30 hover:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all">
+                  {collab.image ? (
+                    <Image
+                      src={collab.image}
+                      alt={collab.name}
+                      width={80}
+                      height={80}
+                      className="w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-purple-glow/20 group-hover:ring-purple-glow/50 transition-all"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-purple-glow/30 to-teal-glow/20 flex items-center justify-center ring-2 ring-purple-glow/20">
+                      <span className="text-soft-white/60 text-lg font-bold">
+                        {collab.name.split(" ").map((w) => w[0]).join("")}
+                      </span>
+                    </div>
+                  )}
+                  <p className="text-soft-white text-sm font-semibold group-hover:text-purple-glow transition-colors">
+                    {collab.name}
+                  </p>
+                  <p className="text-muted text-xs">{collab.role}</p>
                 </div>
-                <p className="text-soft-white/60 text-sm font-medium">{collab.name}</p>
-                <p className="text-muted text-xs">{collab.role}</p>
-              </div>
-            ))}
+              );
+              return collab.link ? (
+                <a
+                  key={collab.name}
+                  href={collab.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {Card}
+                </a>
+              ) : (
+                <div key={collab.name}>{Card}</div>
+              );
+            })}
+          </div>
+
+          {/* PLYGRND mention */}
+          <div className="glass-card p-4 text-center max-w-md mx-auto opacity-80">
+            <p className="text-soft-white/70 text-sm">
+              Also featured on{" "}
+              <span className="text-teal-glow font-semibold">PLYGRND</span>
+              {" "}&mdash; a live streaming show on Twitch & Kick
+            </p>
           </div>
 
           <p className="text-center text-muted text-sm">
@@ -316,5 +405,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </SplashGate>
   );
 }

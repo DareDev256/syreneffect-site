@@ -6,13 +6,56 @@ import { SocialIcons } from "../components/SocialIcons";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet SyrenEffect — Greek-Iranian content creator and Twitch streamer based in Toronto. Streaming every Wednesday, Thursday & Sunday with monthly 24-hour marathon streams.",
+    "Meet SyrenEffect — Greek-Iranian content creator, Twitch streamer, and digital influencer based in Toronto. Featured with Roy Woods, MK, SisiBanana, KShowTime, and more. Live every Wed, Thu & Sun with monthly 24-hour marathons.",
+  keywords: [
+    "SyrenEffect",
+    "Syren Effect",
+    "Toronto Twitch streamer",
+    "Greek Iranian creator",
+    "content creator Toronto",
+    "female Twitch streamer",
+    "gaming streamer",
+    "Roy Woods collab",
+    "PLYGRND cast",
+    "SisiBanana",
+    "KShowTime",
+    "MK Kiatipis",
+    "Twitch Toronto",
+    "live streamer Canada",
+  ],
   openGraph: {
-    title: "About SyrenEffect",
+    title: "About SyrenEffect — Toronto Creator & Twitch Streamer",
     description:
-      "Greek-Iranian content creator and Twitch streamer. Live every Wed/Thu/Sun.",
+      "Greek-Iranian content creator and Twitch streamer. Featured with Roy Woods, MK, KShowTime, SisiBanana & more. Live every Wed/Thu/Sun.",
   },
 };
+
+const collabHighlights = [
+  {
+    name: "Roy Woods",
+    desc: "OVO Sound artist, Canadian rapper & singer from Brampton",
+    image: "/photos/collabs/roy-woods.png",
+    link: "https://www.instagram.com/roywoods/",
+  },
+  {
+    name: "MK",
+    desc: "Street basketball creator from Ontario with 5M+ followers",
+    image: "/photos/collabs/mk-kiatipis.jpg",
+    link: "https://www.instagram.com/mkiatipis/",
+  },
+  {
+    name: "SisiBanana",
+    desc: "Social media personality with 1M+ TikTok followers",
+    image: "/photos/collabs/sisibanana.jpg",
+    link: "https://www.instagram.com/sisibanana/",
+  },
+  {
+    name: "KShowTime",
+    desc: "Entertainment & basketball creator with 700K+ TikTok",
+    image: "/photos/collabs/kshowtime.jpg",
+    link: "https://www.instagram.com/k_showtime/",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -26,7 +69,7 @@ export default function AboutPage() {
             <div className="avatar-ring">
               <Image
                 src="/photos/Syren5.jpeg"
-                alt="SyrenEffect"
+                alt="SyrenEffect — Toronto Twitch Streamer and Content Creator"
                 width={200}
                 height={200}
                 className="rounded-full object-cover w-[200px] h-[200px]"
@@ -52,16 +95,18 @@ export default function AboutPage() {
               The Creator
             </h2>
             <p className="text-soft-white/70 leading-relaxed">
-              SyrenEffect is a digital content creator who has built a community
-              across Twitch, Instagram, TikTok, and YouTube. With over 21K
-              followers on Instagram and a growing audience across all platforms,
-              she brings authenticity, energy, and personality to every stream
-              and post.
+              SyrenEffect is a Toronto-based digital creator who has built a
+              loyal community across Twitch, Instagram, TikTok, and beyond. With
+              over 21K followers on Instagram and a rapidly growing audience, she
+              brings authenticity, energy, and personality to every stream and
+              post.
             </p>
             <p className="text-soft-white/70 leading-relaxed">
               Born of Greek and Iranian heritage, Syren streams live every
               Wednesday, Thursday, and Sunday — with monthly 24-hour marathon
-              streams that have become a community staple.
+              streams that have become a community staple. Her content spans
+              gaming, lifestyle, and entertainment, connecting audiences through
+              genuine interaction and creative collaborations.
             </p>
           </section>
 
@@ -83,6 +128,49 @@ export default function AboutPage() {
                 <p className="text-muted text-sm">Instagram followers</p>
               </div>
             </div>
+          </section>
+
+          {/* Collabs section on About page */}
+          <section className="glass-card p-8 space-y-6">
+            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold gradient-text">
+              Collaborations
+            </h2>
+            <p className="text-soft-white/70 leading-relaxed">
+              Syren has worked with creators and artists across music,
+              basketball, entertainment, and streaming — from OVO Sound artists
+              to viral content creators with millions of followers.
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {collabHighlights.map((collab) => (
+                <a
+                  key={collab.name}
+                  href={collab.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group"
+                >
+                  <Image
+                    src={collab.image}
+                    alt={collab.name}
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-full object-cover ring-1 ring-purple-glow/20 group-hover:ring-purple-glow/50 transition-all flex-shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-soft-white text-sm font-semibold group-hover:text-purple-glow transition-colors truncate">
+                      {collab.name}
+                    </p>
+                    <p className="text-muted text-xs truncate">{collab.desc}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <p className="text-muted text-xs text-center pt-2">
+              Also featured with Cribazz, Kishka, Ryan Diaz, Khalil,
+              RicohEffna, and as a cast member on{" "}
+              <span className="text-teal-glow">PLYGRND</span> (live show on
+              Twitch & Kick).
+            </p>
           </section>
 
           <section className="glass-card p-8 space-y-4">
