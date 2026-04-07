@@ -98,6 +98,11 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <head>
+        <link rel="preload" href="/syren-montage-web.mp4" as="video" type="video/mp4" />
+        <link rel="preconnect" href="https://clips.twitch.tv" />
+        <link rel="preconnect" href="https://player.twitch.tv" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://static.twitchcdn.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

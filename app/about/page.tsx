@@ -34,25 +34,25 @@ const collabHighlights = [
   {
     name: "Roy Woods",
     desc: "OVO Sound artist, Canadian rapper & singer from Brampton",
-    image: "/photos/collabs/roy-woods.png",
+    image: "/photos/collabs/roy-woods.webp",
     link: "https://www.instagram.com/roywoods/",
   },
   {
     name: "MK",
     desc: "Street basketball creator from Ontario with 5M+ followers",
-    image: "/photos/collabs/mk-kiatipis.jpg",
+    image: "/photos/collabs/mk-kiatipis.webp",
     link: "https://www.instagram.com/mkiatipis/",
   },
   {
     name: "SisiBanana",
     desc: "Social media personality with 1M+ TikTok followers",
-    image: "/photos/collabs/sisibanana.jpg",
+    image: "/photos/collabs/sisibanana.webp",
     link: "https://www.instagram.com/sisibanana/",
   },
   {
     name: "KShowTime",
     desc: "Entertainment & basketball creator with 700K+ TikTok",
-    image: "/photos/collabs/kshowtime.jpg",
+    image: "/photos/collabs/kshowtime.webp",
     link: "https://www.instagram.com/k_showtime/",
   },
 ];
