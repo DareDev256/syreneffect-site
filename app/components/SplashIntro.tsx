@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 type Phase = "static" | "ripple" | "montage" | "ready";
 
@@ -280,7 +281,14 @@ export function SplashIntro({ onComplete }: SplashIntroProps) {
                       }}
                       className="relative z-10"
                     >
-                      <MermaidSilhouette />
+                      <Image
+                        src="/photos/siren-logo.webp"
+                        alt="The Syren Effect"
+                        width={280}
+                        height={376}
+                        className="w-44 h-auto md:w-56 drop-shadow-[0_0_30px_rgba(124,58,237,0.4)]"
+                        priority
+                      />
                     </motion.div>
 
                     {/* Underwater light rays */}
