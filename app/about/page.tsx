@@ -34,6 +34,18 @@ export const metadata: Metadata = {
 
 const collabHighlights = [
   {
+    name: "Neon",
+    desc: "Viral content creator and streamer",
+    image: "/photos/collabs/neon.webp",
+    link: "https://www.instagram.com/n3onsingh/",
+  },
+  {
+    name: "Bktherula",
+    desc: "Atlanta rapper and recording artist",
+    image: "/photos/collabs/bktherula.webp",
+    link: "https://www.instagram.com/bktherula/",
+  },
+  {
     name: "Roy Woods",
     desc: "OVO Sound artist, Canadian rapper & singer from Brampton",
     image: "/photos/collabs/roy-woods.webp",
@@ -44,18 +56,6 @@ const collabHighlights = [
     desc: "Street basketball creator from Ontario with 5M+ followers",
     image: "/photos/collabs/mk-kiatipis.webp",
     link: "https://www.instagram.com/mkiatipis/",
-  },
-  {
-    name: "Bktherula",
-    desc: "Atlanta rapper and recording artist",
-    image: "/photos/collabs/bktherula.webp",
-    link: "https://www.instagram.com/bktherula/",
-  },
-  {
-    name: "Ramriddlz",
-    desc: "Toronto artist and musician",
-    image: "/photos/collabs/ramriddlz.webp",
-    link: "https://www.instagram.com/ramriddlz/",
   },
 ];
 

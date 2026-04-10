@@ -51,16 +51,28 @@ const stats = [
 
 const collabs = [
   {
-    name: "MK",
-    role: "Street Basketball Creator",
-    image: "/photos/collabs/mk-kiatipis.webp",
-    link: "https://www.instagram.com/mkiatipis/",
+    name: "Neon",
+    role: "Content Creator",
+    image: "/photos/collabs/neon.webp",
+    link: "https://www.instagram.com/n3onsingh/",
   },
   {
     name: "Bktherula",
     role: "Rapper & Artist",
     image: "/photos/collabs/bktherula.webp",
     link: "https://www.instagram.com/bktherula/",
+  },
+  {
+    name: "MK",
+    role: "Street Basketball Creator",
+    image: "/photos/collabs/mk-kiatipis.webp",
+    link: "https://www.instagram.com/mkiatipis/",
+  },
+  {
+    name: "Roy Woods",
+    role: "OVO Sound Artist",
+    image: "/photos/collabs/roy-woods.webp",
+    link: "https://www.instagram.com/roywoods/",
   },
   {
     name: "Khalil",
@@ -73,18 +85,6 @@ const collabs = [
     role: "Artist & Musician",
     image: "/photos/collabs/ramriddlz.webp",
     link: "https://www.instagram.com/ramriddlz/",
-  },
-  {
-    name: "Roy Woods",
-    role: "OVO Sound Artist",
-    image: "/photos/collabs/roy-woods.webp",
-    link: "https://www.instagram.com/roywoods/",
-  },
-  {
-    name: "Neon",
-    role: "Content Creator",
-    image: "/photos/collabs/neon.webp",
-    link: "https://www.instagram.com/n3onsingh/",
   },
   {
     name: "K Showtime",
