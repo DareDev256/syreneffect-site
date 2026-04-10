@@ -6,7 +6,7 @@ import { SocialIcons } from "../components/SocialIcons";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet SyrenEffect — Greek-Iranian content creator, Twitch streamer, and digital influencer based in Toronto. Featured with Roy Woods, MK, SisiBanana, KShowTime, and more. Live every Wed, Thu & Sun with monthly 24-hour marathons.",
+    "Meet SyrenEffect — Greek-Iranian content creator, Twitch streamer, and digital influencer based in Toronto. Featured with Roy Woods, MK, Bktherula, Ramriddlz, Neon, and more. Live every Wed, Thu & Sun with monthly 24-hour marathons.",
   keywords: [
     "SyrenEffect",
     "Syren Effect",
@@ -17,16 +17,18 @@ export const metadata: Metadata = {
     "gaming streamer",
     "Roy Woods collab",
     "PLYGRND cast",
-    "SisiBanana",
-    "KShowTime",
+    "Bktherula",
+    "Ramriddlz",
     "MK Kiatipis",
+    "Neon",
+    "K Showtime",
     "Twitch Toronto",
     "live streamer Canada",
   ],
   openGraph: {
     title: "About SyrenEffect — Toronto Creator & Twitch Streamer",
     description:
-      "Greek-Iranian content creator and Twitch streamer. Featured with Roy Woods, MK, KShowTime, SisiBanana & more. Live every Wed/Thu/Sun.",
+      "Greek-Iranian content creator and Twitch streamer. Featured with Roy Woods, MK, Bktherula, Ramriddlz & more. Live every Wed/Thu/Sun.",
   },
 };
 
@@ -44,16 +46,16 @@ const collabHighlights = [
     link: "https://www.instagram.com/mkiatipis/",
   },
   {
-    name: "SisiBanana",
-    desc: "Social media personality with 1M+ TikTok followers",
-    image: "/photos/collabs/sisibanana.webp",
-    link: "https://www.instagram.com/sisibanana/",
+    name: "Bktherula",
+    desc: "Atlanta rapper and recording artist",
+    image: "/photos/collabs/bktherula.webp",
+    link: "https://www.instagram.com/bktherula/",
   },
   {
-    name: "KShowTime",
-    desc: "Entertainment & basketball creator with 700K+ TikTok",
-    image: "/photos/collabs/kshowtime.webp",
-    link: "https://www.instagram.com/k_showtime/",
+    name: "Ramriddlz",
+    desc: "Toronto artist and musician",
+    image: "/photos/collabs/ramriddlz.webp",
+    link: "https://www.instagram.com/ramriddlz/",
   },
 ];
 
@@ -166,8 +168,8 @@ export default function AboutPage() {
               ))}
             </div>
             <p className="text-muted text-xs text-center pt-2">
-              Also featured with Cribazz, Kishka, Ryan Diaz, Khalil,
-              RicohEffna, and as a cast member on{" "}
+              Also featured with Khalil, Neon, K Showtime, Lebraun Smith,
+              Swavy, Alk Hussein, Nater, and as a cast member on{" "}
               <span className="text-teal-glow">PLYGRND</span> (live show on
               Twitch & Kick).
             </p>

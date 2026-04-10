@@ -51,58 +51,70 @@ const stats = [
 
 const collabs = [
   {
-    name: "Roy Woods",
-    role: "OVO Sound Artist",
-    image: "/photos/collabs/roy-woods.webp",
-    link: "https://www.instagram.com/roywoods/",
-  },
-  {
     name: "MK",
     role: "Street Basketball Creator",
     image: "/photos/collabs/mk-kiatipis.webp",
     link: "https://www.instagram.com/mkiatipis/",
   },
   {
-    name: "SisiBanana",
-    role: "Content Creator",
-    image: "/photos/collabs/sisibanana.webp",
-    link: "https://www.instagram.com/sisibanana/",
+    name: "Bktherula",
+    role: "Rapper & Artist",
+    image: "/photos/collabs/bktherula.webp",
+    link: "https://www.instagram.com/bktherula/",
   },
   {
-    name: "KShowTime",
+    name: "Khalil",
+    role: "Content Creator",
+    image: "/photos/collabs/khalil.webp",
+    link: "https://www.instagram.com/khalil/",
+  },
+  {
+    name: "Ramriddlz",
+    role: "Artist & Musician",
+    image: "/photos/collabs/ramriddlz.webp",
+    link: "https://www.instagram.com/ramriddlz/",
+  },
+  {
+    name: "Roy Woods",
+    role: "OVO Sound Artist",
+    image: "/photos/collabs/roy-woods.webp",
+    link: "https://www.instagram.com/roywoods/",
+  },
+  {
+    name: "Neon",
+    role: "Content Creator",
+    image: "/photos/collabs/neon.webp",
+    link: "https://www.instagram.com/n3onsingh/",
+  },
+  {
+    name: "K Showtime",
     role: "Entertainment Creator",
     image: "/photos/collabs/kshowtime.webp",
     link: "https://www.instagram.com/k_showtime/",
   },
   {
-    name: "Cribazz",
-    role: "Streamer & Creator",
-    image: "/photos/collabs/cribazz.webp",
-    link: "https://www.twitch.tv/cribazz",
-  },
-  {
-    name: "Kishka",
-    role: "Twitch Streamer",
-    image: "/photos/collabs/kishka.webp",
-    link: "https://www.instagram.com/almightykishka/",
-  },
-  {
-    name: "Ryan Diaz",
-    role: "Creator & Streamer",
-    image: "/photos/collabs/ryan-diaz.webp",
-    link: "https://www.instagram.com/ryan_railer/",
-  },
-  {
-    name: "Khalil",
-    role: "Twitch Streamer",
-    image: "/photos/collabs/khalil.webp",
-    link: "https://www.twitch.tv/khalil_",
-  },
-  {
-    name: "RicohEffna",
+    name: "Lebraun Smith",
     role: "Content Creator",
-    image: null,
-    link: null,
+    image: "/photos/collabs/lebraun-smith.webp",
+    link: "https://www.instagram.com/lebraunsmith/",
+  },
+  {
+    name: "Swavy",
+    role: "Content Creator",
+    image: "/photos/collabs/swavy.webp",
+    link: "https://www.instagram.com/swavy/",
+  },
+  {
+    name: "Alk Hussein",
+    role: "Content Creator",
+    image: "/photos/collabs/alk-hussein.webp",
+    link: "https://www.instagram.com/alkhussein/",
+  },
+  {
+    name: "Nater",
+    role: "Content Creator",
+    image: "/photos/collabs/nater.webp",
+    link: "https://www.instagram.com/nater4l/",
   },
 ];
 
