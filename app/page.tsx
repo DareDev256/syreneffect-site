@@ -5,6 +5,7 @@ import { PhotoBackground } from "./components/PhotoBackground";
 import { SocialIcons } from "./components/SocialIcons";
 import { SplashGate } from "./components/SplashGate";
 import { LazyClip } from "./components/LazyClip";
+import { DiscordWidget } from "./components/DiscordWidget";
 
 /* SVG flag components */
 function GreeceFlag() {
@@ -375,7 +376,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== SECTION 5: CONNECT ========== */}
+      {/* ========== SECTION 5: DISCORD ========== */}
+      <section className="relative py-20 px-4 border-t border-card-border">
+        <div className="max-w-md mx-auto space-y-8 relative z-10">
+          <div className="text-center space-y-3">
+            <p className="text-xs text-[#5865F2] tracking-[0.3em] uppercase font-medium">
+              Community
+            </p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold gradient-text">
+              Join The Discord
+            </h2>
+          </div>
+          <DiscordWidget />
+        </div>
+      </section>
+
+      {/* ========== SECTION 6: CONNECT ========== */}
       <section className="relative py-20 px-4 border-t border-card-border overflow-hidden">
         <PhotoBackground />
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">

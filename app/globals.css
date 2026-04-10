@@ -279,6 +279,29 @@ body {
   to { opacity: 1; }
 }
 
+/* === EMOTE WALL === */
+@keyframes emote-rise {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-10vh) rotate(5deg) scale(1);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(-10deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.animate-emote-rise {
+  animation: emote-rise linear forwards;
+}
+
 /* === SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 6px;

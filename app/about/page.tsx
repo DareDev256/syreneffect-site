@@ -184,19 +184,27 @@ export default function AboutPage() {
               Whether you are a gaming brand, lifestyle company, or content
               platform — let us create something together.
             </p>
-            <a
-              href="mailto:management@syreneffect.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-glow to-teal-glow text-white font-semibold text-sm tracking-wider uppercase hover:shadow-[0_0_40px_rgba(124,58,237,0.3)] hover:scale-105 transition-all"
-            >
-              <svg
-                className="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="mailto:management@syreneffect.com"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-glow to-teal-glow text-white font-semibold text-sm tracking-wider uppercase hover:shadow-[0_0_40px_rgba(124,58,237,0.3)] hover:scale-105 transition-all"
               >
-                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-              </svg>
-              Business Inquiries
-            </a>
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                </svg>
+                Business Inquiries
+              </a>
+              <a
+                href="/media-kit"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-card-border text-soft-white font-medium text-sm tracking-wider uppercase hover:border-purple-glow/40 hover:bg-card-bg transition-all hover:scale-105"
+              >
+                View Media Kit
+              </a>
+            </div>
           </section>
         </div>
 
