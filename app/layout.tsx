@@ -39,11 +39,11 @@ export const metadata: Metadata = {
     "female twitch streamer",
     "Roy Woods",
     "PLYGRND",
-    "SisiBanana",
-    "KShowTime",
+    "Neon",
+    "Bktherula",
     "MK Kiatipis",
-    "Cribazz",
-    "Kishka",
+    "Ramriddlz",
+    "K Showtime",
   ],
   authors: [{ name: "SyrenEffect" }],
   creator: "SyrenEffect",
@@ -98,6 +98,8 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#7c3aed" />
         <link rel="preload" href="/syren-montage-web.mp4" as="video" type="video/mp4" />
         <link rel="preconnect" href="https://clips.twitch.tv" />
         <link rel="preconnect" href="https://player.twitch.tv" />
